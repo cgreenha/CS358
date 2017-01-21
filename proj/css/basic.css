@@ -1,0 +1,26 @@
+body {
+  font-family: 'Warnock Pro', 'Minion Pro', 'Times New Roman';
+}
+
+h1,h2 {
+  font-family: 'Avenir', 'Gotham', 'Arial';
+}
+
+.header {
+  text-align: center;
+  font-family: 'Avenir', 'Gotham', 'Arial';
+  font-size: 2em;
+  color: #FFF;
+  background: #381e0e; /*Dark Brown*/
+}
+
+.headerBot {
+  height: 8px;
+  margin-bottom: 2em;
+  background: #c8b18b; /*Tan*/
+}
+
+#chart_div {
+  height: 100%;
+  width: 100%;
+}

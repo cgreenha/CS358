@@ -1,0 +1,87 @@
+<div class="container-fluid">
+
+<div class="form-group">
+  <label for="selectTest">Select procedure:</label>
+  <select class="form-control" id="selectTest" ng-model="userSelected"
+    ng-options="o as o.name for o in selTest['data'] track by o.id"
+    >
+  </select>
+</div>
+
+
+<div ng-if="showRes()">
+
+  <hr>
+
+  <h2>{{userSelected['name']}}</h2>
+
+  <!-- Carousel area -->
+  <div class="row">
+  <div id="imageArea"
+    class="col-sm-6">
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel"
+          ng-repeat="f in userSelected['filepaths']"
+          data-slide-to="{{$index}}"
+          ng-class="{'active': $first}">
+        </li>
+      </ol>
+
+      <!-- Wrapper for slides? -->
+      <div class="carousel-inner" role="listbox">
+        <div
+          ng-repeat="ff in userSelected['filepaths']"
+          ng-class="{'item': true, 'active': $first}"
+          >
+          <img ng-src="assets/{{userSelected['assetDirName']}}/resized/{{ff}}" alt="{{ff}}">
+        </div>
+      </div>
+
+      <!-- Left/right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+    </div><!-- end carousel -->
+  </div>
+
+  <!-- Chart area -->
+  <div id="chartArea"
+    class="col-sm-6">
+    <div id="chart_div"></div>
+  </div>
+
+  <div id="graphArea"
+    class="col-sm-6"
+    style="background-color: #9999ff;">
+    <p>Graph controls, selections?</p>
+    <select class="form-control" ng-model="selx" ng-options="col in xField"></select>
+    <p ng-repeat="yolo in xField">{{yolo}}</p>
+    <!--
+    <select class="form-control" ng-model="sely" ng-options="col in yField"></select>
+    -->
+  </div>
+  </div>
+
+  <!-- TODO: figure out better way for spacing -->
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">Comments/Instructions</div>
+        <div class="panel-body">{{getComments(userSelected['id'])}}</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- End of show when selected
+
+</div>
